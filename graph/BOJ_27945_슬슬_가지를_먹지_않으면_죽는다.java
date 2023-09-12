@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.StringTokenizer;
@@ -31,17 +33,20 @@ public class BOJ_27945_슬슬_가지를_먹지_않으면_죽는다 {
 			int to = Integer.parseInt(st.nextToken());
 			int day = Integer.parseInt(st.nextToken());
 //			graph.add(new Node(from, to, day));
-			pq.add(new Node(from, to, day));
+			graph.add(new Node(from, to, day));
 		}
+		
+		Collections.sort(graph);
 		
 		parents = new int[vertex+1];
 		for(int i = 1; i <= vertex; i++) parents[i] = i;
-		int count = 0;
+		int count = 1;
 		
 		for(Node node : pq) {
-			count++;
-			if(union(node.from, node.to)){
-				if(node.day != count) break;
+			if(node.day != count) break;			
+			if(find(node.to) != find(node.from)){
+				union(node.to, node.from);
+				count++;							
 			}
 		}
 		
@@ -50,8 +55,8 @@ public class BOJ_27945_슬슬_가지를_먹지_않으면_죽는다 {
 	}
 	
 	static int find(int a) {
-		if(find(a) == a) return a;
-		return parents[a] = find(parents[a]);
+		if(parents[a] == a) return a;
+		else return parents[a] = find(parents[a]);
 	}
 	
 	static boolean union(int a, int b) {

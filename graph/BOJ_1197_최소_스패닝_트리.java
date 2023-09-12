@@ -10,6 +10,7 @@ public class BOJ_1197_최소_스패닝_트리 {
 	static int vertex, edge;
 	static int[] parents;
 	static ArrayList<Node> nodeList;
+	static ArrayList<Node> graph;
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
