@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class BOJ_2110_°øÀ¯±â_¼³Ä¡ {
+public class BOJ_2110_ê³µìœ ê¸°_ì„¤ì¹˜ {
 	static int[] target, src;
 	static int T, line, count, max = Integer.MIN_VALUE;
 	static boolean[] visited;

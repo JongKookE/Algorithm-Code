@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class BOJ_8972_╧лдё_╬ф╣нюлЁК {
-	// 0╧Ь╟З 5╧Ь ╫╨е╣гь╬ъ╣е
+public class BOJ_8972_К╞╦Л╧°_Л∙└К▒░Л²╢К┘╦ {
+	// 0О©╫О©╫О©╫О©╫ 5О©╫О©╫ О©╫О©╫е╣О©╫ь╬ъ╣О©╫
 	static int[] dx = {-100, -1, 0, 1, -1 , -100, 1, -1, 0, 1}, dy = {-100, 1, 1, 1, 0, -100, 0, -1, -1, -1};
 	static int count;
 	static char[][] map;
@@ -50,10 +50,10 @@ public class BOJ_8972_╧лдё_╬ф╣нюлЁК {
 		}
 
 	}
-	// ╦П╣Г ╬ф╣нюлЁК©м а╬╪Ж ╥н╨©ю╩ ©РаВюл╢б ©╙гр
+	// О©╫О©╫О©╫ О©╫ф╣О©╫О©╫лЁО©╫О©╫ О©╫О©╫О©╫О©╫ О©╫н╨О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫л╢О©╫ О©╫О©╫О©╫О©╫
 	static void jongsu(char move) {
 		int y = 0, x = 0;
-		// ╬ф а╬╪Ж╦╕ ╦уюЗ ©е╠Д хд©║ гь╬ъ╣й
+		// О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫ О©╫е╠О©╫ О©╫д©О©╫ О©╫ь╬ъ╣О©╫
 		for(int i = 0; i < robots.size(); i++) {	
 			if(robots.get(i).isRobot) {				
 				if(move != '5') {
@@ -67,9 +67,9 @@ public class BOJ_8972_╧лдё_╬ф╣нюлЁК {
 			}
 		}
 				
-			// юла╕ ╬ф╣нюлЁК╣Июл а╬╪Жгяев ╟║╠Н©ЖаЖ╢б дз╣Е╦╕ б╔╬ъ┴н
-			// ╬ф╣нюлЁКЁ╒╦╝ ╟Цд║╦И юз╠Б╣ИЁ╒╦╝ ╩Г╤СаЖ╢б дз╣Е╣╣ б╔╬ъ┴н
-			// ╠в╦╝╟М Ё╜ ╟П емаЗ╟е╟╟ю╫
+			// О©╫О©╫О©╫О©╫ О©╫ф╣О©╫О©╫лЁО©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫з╣Е╦╕ б╔О©╫ъ┴О©╫
+			// О©╫ф╣О©╫О©╫лЁКЁ╒О©╫О©╫ О©╫О©╫д║О©╫О©╫ О©╫з╠О©╫ИЁ╒О©╫О©╫ О©╫О©╫О©╫О©╫О©╫О©╫О©╫ О©╫з╣Е╣╣ б╔О©╫ъ┴О©╫
+			// О©╫в╦О©╫О©╫О©╫ О©╫О©╫ О©╫О©╫ О©╫О©╫О©╫О©╫О©╫е╟О©╫О©╫О©╫
 		for(int i = 0; i < robots.size(); i++) {
 			if(!robots.get(i).isRobot) {					
 				int min = Integer.MAX_VALUE, min_x = 0, min_y = 0;
@@ -98,7 +98,7 @@ public class BOJ_8972_╧лдё_╬ф╣нюлЁК {
 				
 				if(robots.get(i).x == robots.get(d).x && robots.get(i).y == robots.get(d).y) {
 					if(robots.get(i).isRobot) return false;
-					// ╬ф╣нюлЁКЁ╒╦╝ ╟Цд║╦И
+					// О©╫ф╣О©╫О©╫лЁКЁ╒О©╫О©╫ О©╫О©╫д║О©╫О©╫
 					else {
 						robots.remove(d);
 						robots.remove(i);
@@ -112,7 +112,7 @@ public class BOJ_8972_╧лдё_╬ф╣нюлЁК {
 
 	static class Robot {
 		int y, x;
-		// false ╤С╦И ╬ф╣нюлЁК!
+		// false О©╫О©╫О©╫ О©╫ф╣О©╫О©╫лЁО©╫!
 		boolean isRobot;
 
 		public Robot(int y, int x, boolean isRobot) {

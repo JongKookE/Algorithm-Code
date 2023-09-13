@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
 
-public class BOJ_1197_ÃÖ¼Ò_½ºÆĞ´×_Æ®¸® {
+public class BOJ_1197_ìµœì†Œ_ìŠ¤íŒ¨ë‹_íŠ¸ë¦¬ {
 	static int vertex, edge;
 	static int[] parents;
 	static ArrayList<Node> nodeList;

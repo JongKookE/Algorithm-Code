@@ -3,7 +3,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 
-public class BOJ_9290_∆Ω≈√≈‰_¿Ã±‚±‚ {
+public class BOJ_9290_Ìã±ÌÉùÌÜ†_Ïù¥Í∏∞Í∏∞ {
     static char[][] tictactoe;
     static char unit;
     public static void main(String[] args) throws IOException {
@@ -44,15 +44,15 @@ public class BOJ_9290_∆Ω≈√≈‰_¿Ã±‚±‚ {
             int width = 0;
             int height = 0;
             for(int j = 0; j < 3; j++){
-                // ∞°∑Œ ∞ÀªÁ
+                // ÔøΩÔøΩÔøΩÔøΩ ÔøΩÀªÔøΩ
                 if(tictactoe[i][j] == unit) width++;
-                // ºº∑Œ ∞ÀªÁ
+                // ÔøΩÔøΩÔøΩÔøΩ ÔøΩÀªÔøΩ
                 if(tictactoe[j][i] == unit) height++;
             }
             if(width == 3 || height == 3) return true;
         }
 
-        // ¥Î∞¢º± ∞ÀªÁ
+        // ÔøΩÎ∞¢ÔøΩÔøΩ ÔøΩÀªÔøΩ
         int count = 0;
         for(int i = 0; i < 3; i++){
             if(tictactoe[i][i] == unit) count++;

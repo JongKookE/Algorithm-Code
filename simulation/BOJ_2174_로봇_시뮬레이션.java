@@ -5,15 +5,15 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-public class BOJ_2174_·Îº¿_½Ã¹Ä·¹ÀÌ¼Ç {
+public class BOJ_2174_ë¡œë´‡_ì‹œë®¬ë ˆì´ì…˜ {
     static int col, row, robotInitial, robotOperationCount, map[][];
     static Robot[] robotMap;
     public static void main(String[] args) throws IOException{
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         StringTokenizer st = new StringTokenizer(br.readLine());
-        // °¡·Î
+        // ê°€ë¡œ
         row = Integer.parseInt(st.nextToken());
-        // ¼¼·Î
+        // ì„¸ë¡œ
         col = Integer.parseInt(st.nextToken());
 
 
@@ -29,33 +29,33 @@ public class BOJ_2174_·Îº¿_½Ã¹Ä·¹ÀÌ¼Ç {
             int x = Integer.parseInt(st.nextToken());
             int y = Integer.parseInt(st.nextToken());
             char d = st.nextToken().charAt(0);
-            // ·Îº¿ ¹øÈ£, ·Îº¿ yÁÂÇ¥, ·Îº¿ x ÁÂÇ¥, ·Îº¿ÀÇ ¹æÇâ
-            // i ´Â 1ºÎÅÍ ½ÃÀÛÇØ¼­ ·Îº¿ÀÇ ¹øÈ£¸¦ ¹è¿­¿¡ ³ÖÀ¸¹Ç·Î ±¸ºĞÇØÁÜ
+            // ë¡œë´‡ ë²ˆí˜¸, ë¡œë´‡ yì¢Œí‘œ, ë¡œë´‡ x ì¢Œí‘œ, ë¡œë´‡ì˜ ë°©í–¥
+            // i ëŠ” 1ë¶€í„° ì‹œì‘í•´ì„œ ë¡œë´‡ì˜ ë²ˆí˜¸ë¥¼ ë°°ì—´ì— ë„£ìœ¼ë¯€ë¡œ êµ¬ë¶„í•´ì¤Œ
             robotMap[i] = new Robot(i, y, x, d);
-            // 2Â÷¿ø ¹è¿­ map ¿¡ y, x ÁÂÇ¥¿¡ ·Îº¿ÀÇ ¹øÈ£¸¦ ³Ö¾îÁÜ
+            // 2ì°¨ì› ë°°ì—´ map ì— y, x ì¢Œí‘œì— ë¡œë´‡ì˜ ë²ˆí˜¸ë¥¼ ë„£ì–´ì¤Œ
             map[y][x] = i;
         }
 
         for(int i = 0; i < robotOperationCount; i++) {
             st = new StringTokenizer(br.readLine());
-            // ·Îº¿ÀÇ ¹øÈ£
+            // ë¡œë´‡ì˜ ë²ˆí˜¸
             int robotNumber = Integer.parseInt(st.nextToken());
-            // ·Îº¿ÀÌ ÇÏ´Ş¹ŞÀº ¸í·É
+            // ë¡œë´‡ì´ í•˜ë‹¬ë°›ì€ ëª…ë ¹
             char robotOperation = st.nextToken().charAt(0);
-            // ·Îº¿ÀÌ ¸í·ÉÀ» ¼öÇàÇÏ´Â È½¼ö
+            // ë¡œë´‡ì´ ëª…ë ¹ì„ ìˆ˜í–‰í•˜ëŠ” íšŸìˆ˜
             int robotRepetition = Integer.parseInt(st.nextToken());
-            // ÀüÁøÇÑ´Ù¸é
+            // ì „ì§„í•œë‹¤ë©´
             if(robotOperation == 'F') {
-                // moveRobot ¸Ş¼Òµå°¡ true ¸¦ ¹İÈ¯ÇÏ¸é º®¿¡ ºÎµúÈ÷°Å³ª ´Ù¸¥ ·Îº¿°ú ºÎµúÈ÷Áö ¾Ê¾ÒÀ½
-                // false ¸¦ ¹İÈ¯¹ŞÀ¸¸é return À¸·Î ¸ŞÀÎ ¸Ş¼Òµå¸¦ Á¾·á ½ÃÅ´
+                // moveRobot ë©”ì†Œë“œê°€ true ë¥¼ ë°˜í™˜í•˜ë©´ ë²½ì— ë¶€ë”ªíˆê±°ë‚˜ ë‹¤ë¥¸ ë¡œë´‡ê³¼ ë¶€ë”ªíˆì§€ ì•Šì•˜ìŒ
+                // false ë¥¼ ë°˜í™˜ë°›ìœ¼ë©´ return ìœ¼ë¡œ ë©”ì¸ ë©”ì†Œë“œë¥¼ ì¢…ë£Œ ì‹œí‚´
                 if(!moveRobot(robotNumber, robotRepetition)) return;
             }
-            // L ¶Ç´Â R ·Î ¹æÇâÀ» È¸Àü
+            // L ë˜ëŠ” R ë¡œ ë°©í–¥ì„ íšŒì „
             else if(robotOperation == 'L') turnLeft(robotNumber, robotRepetition);
             else if(robotOperation == 'R') turnRight(robotNumber, robotRepetition);
         }
     }
-    // ·Îº¿ ¸í·ÉÀÌ L ·Î µé¾î¿À¸é ½ÇÇà
+    // ë¡œë´‡ ëª…ë ¹ì´ L ë¡œ ë“¤ì–´ì˜¤ë©´ ì‹¤í–‰
     static void turnLeft(int number, int repeat){
         char dir = robotMap[number].dir;
         for(int i = 0; i < repeat; i++){
@@ -66,7 +66,7 @@ public class BOJ_2174_·Îº¿_½Ã¹Ä·¹ÀÌ¼Ç {
         }
 
     }
-    // ·Îº¿ ¸í·ÉÀÌ R ·Î µé¾î¿À¸é ½ÇÇà
+    // ë¡œë´‡ ëª…ë ¹ì´ R ë¡œ ë“¤ì–´ì˜¤ë©´ ì‹¤í–‰
     static void turnRight(int number, int repeat){
         char dir = robotMap[number].dir;
         for(int i = 0; i < repeat; i++){
@@ -77,41 +77,41 @@ public class BOJ_2174_·Îº¿_½Ã¹Ä·¹ÀÌ¼Ç {
         }
     }
 
-    // ·Îº¿ ¸í·ÉÀÌ F ·Î µé¾î¿À¸é ½ÇÇà
-    // º®¿¡ ºÎµúÈ÷°Å³ª ´Ù¸¥ ·Îº¿°ú Ãæµ¹ÇÏ¸é false ¸®ÅÏ
-    // ¸ŞÀÎ ¸Ş¼Òµå¿¡¼­ moveRobotÀÌ true¶ó¸é °è¼Ó ÁøÇà
-    // ¸ŞÀÎ ¸Ş¼Òµå¿¡¼­ moveRobotÀÌ false¶ó¸é Ãâ·ÂÇÏ°í Á¾·á
+    // ë¡œë´‡ ëª…ë ¹ì´ F ë¡œ ë“¤ì–´ì˜¤ë©´ ì‹¤í–‰
+    // ë²½ì— ë¶€ë”ªíˆê±°ë‚˜ ë‹¤ë¥¸ ë¡œë´‡ê³¼ ì¶©ëŒí•˜ë©´ false ë¦¬í„´
+    // ë©”ì¸ ë©”ì†Œë“œì—ì„œ moveRobotì´ trueë¼ë©´ ê³„ì† ì§„í–‰
+    // ë©”ì¸ ë©”ì†Œë“œì—ì„œ moveRobotì´ falseë¼ë©´ ì¶œë ¥í•˜ê³  ì¢…ë£Œ
     static boolean moveRobot(int number, int repeat){
         int y = robotMap[number].y;
         int x = robotMap[number].x;
         char dir = robotMap[number].dir;
         
-        // ·Îº¿ÀÌ NÀ¸·Î ÀÌµ¿ ÇÑ´Ù¸é y ÁÂÇ¥°¡ ÁÙ¾îµé°Ô ‰Î
+        // ë¡œë´‡ì´ Nìœ¼ë¡œ ì´ë™ í•œë‹¤ë©´ y ì¢Œí‘œê°€ ì¤„ì–´ë“¤ê²Œ ëŒ
         if(dir == 'N'){
-            // ÀÚ±â ÀÚ½ÅÀÇ ÀÚ¸® Á¦¿Ü
+            // ìê¸° ìì‹ ì˜ ìë¦¬ ì œì™¸
             for(int i = y-1; i > y - repeat - 1; i--){
-                // ·Îº¿ÀÌ ¹üÀ§¸¦ ¹ş¾î³­´Ù¸é º®¿¡ ºÎ‹HÈù°ÅÀÓ
+                // ë¡œë´‡ì´ ë²”ìœ„ë¥¼ ë²—ì–´ë‚œë‹¤ë©´ ë²½ì— ë¶€ë”«íŒê±°ì„
                 if(i == -1){
                     System.out.printf("Robot %d crashed into the wall", number);
                     return false;
                 }
-                // ÇöÀç map¿¡´Â 0°ú ·Îº¿ÀÇ ¹øÈ£°¡ ÀûÇôÀÖ´Âµ¥
-                // 0ÀÌ ¾Æ´Ñ ¼ıÀÚ¸¦ ¸¸³µ´Ù¸é ´Ù¸¥ ·Îº¿°ú ºÎµúÈù°ÍÀÌ±â ¶§¹®¿¡ Ãâ·ÂÇÏ°í Á¾·á
+                // í˜„ì¬ mapì—ëŠ” 0ê³¼ ë¡œë´‡ì˜ ë²ˆí˜¸ê°€ ì í˜€ìˆëŠ”ë°
+                // 0ì´ ì•„ë‹Œ ìˆ«ìë¥¼ ë§Œë‚¬ë‹¤ë©´ ë‹¤ë¥¸ ë¡œë´‡ê³¼ ë¶€ë”ªíŒê²ƒì´ê¸° ë•Œë¬¸ì— ì¶œë ¥í•˜ê³  ì¢…ë£Œ
                 if(map[i][x] != 0){
-                    // ´Ù¸¥ ·Îº¿°ú Ãæµ¹ÇÏ¸é Ãâ·ÂÇÏ°í return false
+                    // ë‹¤ë¥¸ ë¡œë´‡ê³¼ ì¶©ëŒí•˜ë©´ ì¶œë ¥í•˜ê³  return false
                     System.out.printf("Robot %d crashed into robot %d", number, map[i][x]);
                     return false;
                 }
             }
-            // »õ·Ó°Ô °£ ÀÚ¸®¿¡ Áö±İ ¹øÈ£¸¦ ÀúÀåÇÑ ÈÄ
-            // ±âÁ¸ ÀÚ¸®´Â ºó ÀÚ¸®·Î Ãë±Ş
-            // ±×¸®°í y ÁÂÇ¥¸¦ »õ·Ó°Ô ¼öÁ¤
+            // ìƒˆë¡­ê²Œ ê°„ ìë¦¬ì— ì§€ê¸ˆ ë²ˆí˜¸ë¥¼ ì €ì¥í•œ í›„
+            // ê¸°ì¡´ ìë¦¬ëŠ” ë¹ˆ ìë¦¬ë¡œ ì·¨ê¸‰
+            // ê·¸ë¦¬ê³  y ì¢Œí‘œë¥¼ ìƒˆë¡­ê²Œ ìˆ˜ì •
             map[y][x] = 0;
             map[y-repeat][x] = number;
             robotMap[number].y -= repeat;
         }
         else if(dir == 'E') {
-            // ÀÚ±â ÀÚ½ÅÀÇ ÀÚ¸® Á¦¿Ü
+            // ìê¸° ìì‹ ì˜ ìë¦¬ ì œì™¸
             for (int i = x + 1; i < x + repeat - 1; i++) {
                 if (i >= row) {
                     System.out.printf("Robot %d crashed into the wall", number);
@@ -119,7 +119,7 @@ public class BOJ_2174_·Îº¿_½Ã¹Ä·¹ÀÌ¼Ç {
                 }
 
                 if (map[y][i] != 0) {
-                    // ´Ù¸¥ ·Îº¿°ú Ãæµ¹ÇÏ¸é Ãâ·ÂÇÏ°í return false
+                    // ë‹¤ë¥¸ ë¡œë´‡ê³¼ ì¶©ëŒí•˜ë©´ ì¶œë ¥í•˜ê³  return false
                     System.out.printf("Robot %d crashed into robot %d", number, map[y][i]);
                     return false;
                 }
@@ -129,7 +129,7 @@ public class BOJ_2174_·Îº¿_½Ã¹Ä·¹ÀÌ¼Ç {
             robotMap[number].x += repeat;
         }
         if(dir == 'S') {
-            // ÀÚ±â ÀÚ½ÅÀÇ ÀÚ¸® Á¦¿Ü
+            // ìê¸° ìì‹ ì˜ ìë¦¬ ì œì™¸
             for (int i = y + 1; i < y + repeat + 1; i++) {
                 if (i >= col) {
                     System.out.printf("Robot %d crashed into the wall", number);
@@ -137,7 +137,7 @@ public class BOJ_2174_·Îº¿_½Ã¹Ä·¹ÀÌ¼Ç {
                 }
 
                 if (map[i][x] != 0) {
-                    // ´Ù¸¥ ·Îº¿°ú Ãæµ¹ÇÏ¸é Ãâ·ÂÇÏ°í return false
+                    // ë‹¤ë¥¸ ë¡œë´‡ê³¼ ì¶©ëŒí•˜ë©´ ì¶œë ¥í•˜ê³  return false
                     System.out.printf("Robot %d crashed into robot %d", number, map[i][x]);
                     return false;
                 }
@@ -147,7 +147,7 @@ public class BOJ_2174_·Îº¿_½Ã¹Ä·¹ÀÌ¼Ç {
             robotMap[number].y += repeat;
         }
         if(dir == 'W') {
-            // ÀÚ±â ÀÚ½ÅÀÇ ÀÚ¸® Á¦¿Ü
+            // ìê¸° ìì‹ ì˜ ìë¦¬ ì œì™¸
             for (int i = x - 1; i > x - repeat - 1; i--) {
                 if (i == -1) {
                     System.out.printf("Robot %d crashed into the wall", number);
@@ -155,7 +155,7 @@ public class BOJ_2174_·Îº¿_½Ã¹Ä·¹ÀÌ¼Ç {
                 }
 
                 if (map[y][i] != 0) {
-                    // ´Ù¸¥ ·Îº¿°ú Ãæµ¹ÇÏ¸é Ãâ·ÂÇÏ°í return false
+                    // ë‹¤ë¥¸ ë¡œë´‡ê³¼ ì¶©ëŒí•˜ë©´ ì¶œë ¥í•˜ê³  return false
                     System.out.printf("Robot %d crashed into robot %d", number, map[y][i]);
                     return false;
                 }

@@ -7,7 +7,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class BOJ_2206_º®_ºÎ¼ö°í_ÀÌµ¿ÇÏ±â {
+public class BOJ_2206_ë²½_ë¶€ìˆ˜ê³ _ì´ë™í•˜ê¸° {
 	static int col, row, map[][];
 	static boolean[][] visited;
 	static int[] dx = {-1,1, 0, 0}, dy = {0, 0, -1, 1};
@@ -36,9 +36,6 @@ public class BOJ_2206_º®_ºÎ¼ö°í_ÀÌµ¿ÇÏ±â {
 
 	}
 
-	// -1 ÀÌ¹Ì ´Ù³à°£ ÀÚ¸®
-	// 1 º®À¸·Î ¸·Èù ÀÚ¸®
-	// 0 ÀÌµ¿°¡´ÉÇÑ ÀÚ¸®
 	static void bfs(int y, int x) {
 		Queue<Node> queue = new ArrayDeque<>(	);
 		queue.offer(new Node(y, x));
