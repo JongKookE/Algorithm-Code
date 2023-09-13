@@ -8,7 +8,6 @@ import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class BOJ_8972_미친_아두이노 {
-	// 0���� 5�� ��ŵ�ؾߵ�
 	static int[] dx = {-100, -1, 0, 1, -1 , -100, 1, -1, 0, 1}, dy = {-100, 1, 1, 1, 0, -100, 0, -1, -1, -1};
 	static int count;
 	static char[][] map;
@@ -50,10 +49,8 @@ public class BOJ_8972_미친_아두이노 {
 		}
 
 	}
-	// ��� �Ƶ��̳�� ���� �κ��� �����̴� ����
 	static void jongsu(char move) {
 		int y = 0, x = 0;
-		// �� ������ ���� �ű� �Ŀ� �ؾߵ�
 		for(int i = 0; i < robots.size(); i++) {	
 			if(robots.get(i).isRobot) {				
 				if(move != '5') {
@@ -67,9 +64,7 @@ public class BOJ_8972_미친_아두이노 {
 			}
 		}
 				
-			// ���� �Ƶ��̳���� �������� ��������� �ڵ带 ¥�߉�
-			// �Ƶ��̳볢�� ��ġ�� �ڱ�鳢�� ������� �ڵ嵵 ¥�߉�
-			// �׸��� �� �� �����Ű���
+
 		for(int i = 0; i < robots.size(); i++) {
 			if(!robots.get(i).isRobot) {					
 				int min = Integer.MAX_VALUE, min_x = 0, min_y = 0;
@@ -98,7 +93,7 @@ public class BOJ_8972_미친_아두이노 {
 				
 				if(robots.get(i).x == robots.get(d).x && robots.get(i).y == robots.get(d).y) {
 					if(robots.get(i).isRobot) return false;
-					// �Ƶ��̳볢�� ��ġ��
+
 					else {
 						robots.remove(d);
 						robots.remove(i);
@@ -112,7 +107,6 @@ public class BOJ_8972_미친_아두이노 {
 
 	static class Robot {
 		int y, x;
-		// false ��� �Ƶ��̳�!
 		boolean isRobot;
 
 		public Robot(int y, int x, boolean isRobot) {

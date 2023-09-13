@@ -44,15 +44,12 @@ public class BOJ_9290_틱택토_이기기 {
             int width = 0;
             int height = 0;
             for(int j = 0; j < 3; j++){
-                // ���� �˻�
                 if(tictactoe[i][j] == unit) width++;
-                // ���� �˻�
                 if(tictactoe[j][i] == unit) height++;
             }
             if(width == 3 || height == 3) return true;
         }
 
-        // �밢�� �˻�
         int count = 0;
         for(int i = 0; i < 3; i++){
             if(tictactoe[i][i] == unit) count++;
