@@ -57,7 +57,7 @@ public class BOJ_2206_벽_부수고_이동하기 {
 			for(int d = 0; d < 4; d++) {
 				int nx = nodeX + dx[d];
 				int ny = nodeY + dy[d];
-				if(nx > 0 || ny > 0 || nx <= row || ny <= col) continue;
+				if(nx < 0 || ny < 0 || nx >= row || ny >= col) continue;
 				// 벽을 만나지 않으면
 				if(map[ny][nx] == 0) {
 					// 벽을 한번도 부수지 않았을 때
