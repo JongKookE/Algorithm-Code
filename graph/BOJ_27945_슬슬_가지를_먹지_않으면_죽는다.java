@@ -11,7 +11,7 @@ import java.util.PriorityQueue;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-public class BOJ_27945_½½½½_°¡Áö¸¦_¸ÔÁö_¾ÊÀ¸¸é_Á×´Â´Ù {
+public class BOJ_27945_ìŠ¬ìŠ¬_ê°€ì§€ë¥¼_ë¨¹ì§€_ì•Šìœ¼ë©´_ì£½ëŠ”ë‹¤ {
 	static int vertex, edge, limit;
 	static ArrayList<Node> graph;
 	static PriorityQueue<Node> pq = new PriorityQueue<>();
@@ -66,7 +66,7 @@ public class BOJ_27945_½½½½_°¡Áö¸¦_¸ÔÁö_¾ÊÀ¸¸é_Á×´Â´Ù {
 		parents[rootB] = rootA;
 		return true;
 	}
-	
+	 
 	
 	
 	static class Node implements Comparable<Node>{
