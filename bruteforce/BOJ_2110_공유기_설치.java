@@ -5,6 +5,7 @@ import java.io.InputStreamReader;
 import java.io.IOException;
 import java.util.StringTokenizer;
 
+<<<<<<< HEAD
 import java.util.Arrays;
 
 public class BOJ_2110_°øÀ¯±â_¼³Ä¡ {
@@ -13,6 +14,13 @@ public class BOJ_2110_°øÀ¯±â_¼³Ä¡ {
 
 	public static void main(String[] args) throws IOException {
 
+=======
+public class BOJ_2110_ê³µìœ ê¸°_ì„¤ì¹˜ {
+	static int[] target, src;
+	static int T, line, count, max = Integer.MIN_VALUE;
+	static boolean[] visited;
+	public static void main(String[] args) throws IOException{
+>>>>>>> 4da1af844a51d21a8da19d9576fb8da18dbb8c80
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		StringTokenizer st = new StringTokenizer(br.readLine()," ");

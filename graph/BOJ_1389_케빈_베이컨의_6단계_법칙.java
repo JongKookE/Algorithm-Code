@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.*;
 
-public class BOJ_1389_ÄÉºó_º£ÀÌÄÁÀÇ_6´Ü°è_¹ıÄ¢ {
+public class BOJ_1389_ì¼€ë¹ˆ_ë² ì´ì»¨ì˜_6ë‹¨ê³„_ë²•ì¹™ {
     static int vertex, edge, count[];
     static ArrayList<Integer>[] graph;
 
