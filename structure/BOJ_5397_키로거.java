@@ -5,7 +5,11 @@ import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.Deque;
 
+<<<<<<< HEAD
 public class BOJ_5397_키로거 {
+=======
+public class BOJ_5397_키로거{
+>>>>>>> f4b47cb8f01b16a05017261117bb75ce8f19d74c
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T = Integer.parseInt(br.readLine());

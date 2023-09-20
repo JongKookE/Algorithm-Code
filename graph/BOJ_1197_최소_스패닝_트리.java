@@ -66,7 +66,11 @@ public class BOJ_1197_최소_스패닝_트리 {
 		if(rootA == rootB) return false;
 		parents[rootA] = rootB;
 		return true;
+<<<<<<< HEAD
 
+=======
+		
+>>>>>>> f4b47cb8f01b16a05017261117bb75ce8f19d74c
 	}
 
 	private static int findSet(int v) {
