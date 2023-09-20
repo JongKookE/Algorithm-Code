@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 
-public class BOJ_11286_Àý´ñ°ª_Èü {
+public class BOJ_11286_ì ˆëŒ“ê°’_íž™ {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int size = Integer.parseInt(br.readLine());
@@ -18,9 +18,9 @@ public class BOJ_11286_Àý´ñ°ª_Èü {
         for(int t = 0; t < size; t++){
             int elem = Integer.parseInt(br.readLine());
             if(elem == 0){
-                // Å¥°¡ ºñ¾îÀÖÁö ¾Ê´Ù¸é
+                // íê°€ ë¹„ì–´ìžˆì§€ ì•Šë‹¤ë©´
                 if(!pq.isEmpty()) System.out.println(pq.poll());
-                // Å¥°¡ ºñ¾îÀÖ´Ù¸é
+                    // íê°€ ë¹„ì–´ìžˆë‹¤ë©´
                 else System.out.println(0);
             }
             else pq.add(elem);
