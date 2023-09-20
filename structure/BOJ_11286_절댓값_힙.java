@@ -18,13 +18,13 @@ public class BOJ_11286_절댓값_힙 {
         for(int t = 0; t < size; t++){
             int elem = Integer.parseInt(br.readLine());
             if(elem == 0){
-<<<<<<< HEAD
+
                 // 큐가 비어있지 않다면
                 if(!pq.isEmpty()) System.out.println(pq.poll());
                     // 큐가 비어있다면
-=======
+
                 if(!pq.isEmpty()) System.out.println(pq.poll());
->>>>>>> f4b47cb8f01b16a05017261117bb75ce8f19d74c
+
                 else System.out.println(0);
             }
             else pq.add(elem);

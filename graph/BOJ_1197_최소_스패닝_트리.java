@@ -9,11 +9,11 @@ import java.util.StringTokenizer;
 import java.util.StringTokenizer;
 
 public class BOJ_1197_최소_스패닝_트리 {
+
 	static int node, edge;
 	static int[] parents;
 	static ArrayList<Node> nodeList;
-	static ArrayList<Node> graph;
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args) throws Exception {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
 
@@ -32,7 +32,7 @@ public class BOJ_1197_최소_스패닝_트리 {
 			int to = Integer.parseInt(st.nextToken());
 			int cost = Integer.parseInt(st.nextToken());
 
-			//from�� ������ to�� ������ ����ġ cost�� �������� ����Ǿ� �ִ�
+			//from번 정점과 to번 정점이 가중치 cost인 간선으로 연결되어 있다
 			nodeList.add(new Node(from,to, cost));
 		}
 
@@ -55,22 +55,14 @@ public class BOJ_1197_최소_스패닝_트리 {
 		System.out.println(sum);
 	}
 
-	static int find(int a) {
-		if(find(a) == a) return a;
-		return parents[a] = find(parents[a]);
-	}
+	private static boolean union(int from, int to) {
 
-	static boolean union(int a, int b) {
-		int rootA = find(a);
-		int rootB = find(b);
-		if(rootA == rootB) return false;
-		parents[rootA] = rootB;
+		int fromRoot = findSet(from);
+		int toRoot = findSet(to);
+
+		if(fromRoot==toRoot) return false;
+		else parents[toRoot] = fromRoot;
 		return true;
-<<<<<<< HEAD
-
-=======
-		
->>>>>>> f4b47cb8f01b16a05017261117bb75ce8f19d74c
 	}
 
 	private static int findSet(int v) {
@@ -97,12 +89,13 @@ public class BOJ_1197_최소_스패닝_트리 {
 			this.cost = cost;
 		}
 
+
+
 		@Override
 		public int compareTo(Node o) {
 			return this.cost - o.cost;
 		}
 
 	}
-
 
 }
