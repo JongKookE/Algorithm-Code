@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.Queue;
 
-import graph.BOJ_11559_Puyo_Puyo.Node;
-
 public class BOJ_11559_Puyo_Puyo {
 	static int[] dx = {-1, 1, 0, 0}, dy = {0, 0, -1, 1};
 	static char[][] field = new char[12][6];
@@ -21,6 +19,7 @@ public class BOJ_11559_Puyo_Puyo {
 				if(field[i][j] != '.') bfs(new Node(i, j, field[i][j]));				
 			}
 		}
+		System.out.println(count);
 	}
 	
 	static void bfs(Node node) {
@@ -60,9 +59,9 @@ public class BOJ_11559_Puyo_Puyo {
 		while(!queue.isEmpty()) {
 			Node node = queue.poll();
 			int x = node.x;
-			int y = node.y;
-			
+			int y = node.y;			
 		}
+		count++;
 	}
 	
 	static class Node{
