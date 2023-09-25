@@ -1,23 +1,29 @@
 import java.util.*;
 import java.io.*;
 
-public class BOJ_10773_제로{
+public class BOJ_10773_제로 {
     public static void main(String[] args) throws Exception {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
-        int T = Integer.parseInt(br.readLine());
-        Deque<Integer> stack = new ArrayDeque<>();
+        int K = Integer.parseInt(br.readLine());
+        Stack<Integer> stack = new Stack<>();
 
-        for(int i=0; i< T; i++) {
+        for(int i=0; i<K; i++) {
             int temp = Integer.parseInt(br.readLine());
 
-            if(temp == 0) stack.pollLast();
-            else stack.offerLast(temp);
+            if(temp == 0) {
+                stack.pop();
+            }
+            else {
+                stack.push(temp);
+            }
+
         }
 
         int sum = 0;
-        for(int num : stack) sum += num;
-
+        for(int num : stack) {
+            sum += num;
+        }
 
         System.out.println(sum);
 

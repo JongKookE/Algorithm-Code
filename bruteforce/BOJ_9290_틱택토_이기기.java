@@ -1,4 +1,5 @@
 package bruteforce;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -44,12 +45,15 @@ public class BOJ_9290_틱택토_이기기 {
             int width = 0;
             int height = 0;
             for(int j = 0; j < 3; j++){
+                // 가로 검사
                 if(tictactoe[i][j] == unit) width++;
+                // 세로 검사
                 if(tictactoe[j][i] == unit) height++;
             }
             if(width == 3 || height == 3) return true;
         }
 
+        // 대각선 검사
         int count = 0;
         for(int i = 0; i < 3; i++){
             if(tictactoe[i][i] == unit) count++;
