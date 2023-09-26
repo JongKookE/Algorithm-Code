@@ -62,7 +62,7 @@ public class BOJ_1194_달이_차오른다_가자 {
 						|| chr[ny][nx] == 'd' || chr[ny][nx] == 'e' || chr[ny][nx] == 'f') {
 					node.key.add(chr[ny][nx]);
 					
-					// 키는 1부터 시작하기 때문임! 그래서 b를 빼는거야~~				
+					// 키는 1부터 시작하기 때문임! 그래서 b를 빼야됌
 					visited[ny][nx][chr[ny][nx] - 'b'] = true;
 					queue.offer(new Node(ny,nx, count, node.key));
 				}	
