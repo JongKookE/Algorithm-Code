@@ -10,8 +10,8 @@ import java.util.Queue;
 import java.util.StringTokenizer;
 
 public class SWEA_5643_키_순서 {
-	static int T, vertex, edge;
-	static ArrayList<ArrayList<Integer>> lst;
+	static int T, vertex, edge, isBig, isSmall;
+	static int[][] lst;
 	static boolean[] visited;
 	
 	public static void main(String[] args) throws IOException{
@@ -20,46 +20,41 @@ public class SWEA_5643_키_순서 {
 		T = Integer.parseInt(br.readLine());
 		
 		for(int t = 1; t <= T; t++) {
-			lst = new ArrayList<>();
 			vertex = Integer.parseInt(br.readLine());
 			edge = Integer.parseInt(br.readLine());
-			visited = new boolean[vertex+1];
-			
-			for(int i = 0; i <= edge; i++) {
-				lst.add(new ArrayList<Integer>());
-			}
+			lst = new int[vertex + 1][vertex + 1];
+
 			for(int e = 1; e <= edge; e++) {
 				StringTokenizer st = new StringTokenizer(br.readLine());
 				int a = Integer.parseInt(st.nextToken());
 				int b = Integer.parseInt(st.nextToken());
-				
-				// a 학생이 b 학생보다 키가 작다.
-				lst.get(a).add(b);
+				lst[a][b] = 1;
 			}
-//			for(int i = 0; i < lst.size(); i++) System.out.println(i + "번 " + lst.get(i));
-			for(int i = 1; i <= edge; i++) chain(i);
+//			for(int i = 1; i <= edge; i++) chain(i);
 		}
 	}
 	
-	static void chain(int start) {
-		Queue<Integer> queue = new ArrayDeque<>();
-		boolean[] visited = new boolean[vertex+1];
+	// 단방향 그래프니까 내가 가르킨 방향은 무조건 나보다 큼
+	// 그 반대로 가르킨값은 나보다 무조건 작음
+	static void big(int start, boolean[] visited) {
 		visited[start] = true;
-		queue.offer(start);
-		while(!queue.isEmpty()) {
-			int v = queue.poll();			
-			System.out.print(v + "번 ");
-			for(int node : lst.get(v)) {
-				if(visited[node]) continue;				
-				visited[node] = true;
-				queue.offer(node);
-//				System.out.print(node + " ");
+		for(int i = 1; i <= vertex; i++){
+			if(!visited[i] && lst[i][start] == 1){
+				big(i, visited);
+				isBig++;
 			}
-			
 		}
-		System.out.println();
 	}
 
+	static void small(int start, boolean[] visited) {
+		visited[start] = true;
+		for(int i = 1; i <= vertex; i++){
+			if(!visited[i] && lst[start][i] == 1){
+				small(i, visited);
+				isSmall++;
+			}
+		}
+	}
 }
 
 

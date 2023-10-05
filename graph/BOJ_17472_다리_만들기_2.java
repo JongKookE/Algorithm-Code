@@ -12,6 +12,7 @@ public class BOJ_17472_다리_만들기_2 {
 	static int[] dx = {-1, 1, 0, 0}, dy = {0, 0, -1, 1};
 	static int col, row, landCount = 1;
 	static int[][] map;
+	static boolean[][] visited;
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
@@ -36,7 +37,12 @@ public class BOJ_17472_다리_만들기_2 {
 				}
 			}
 		}
-		
+		for(int i = 0; i < col; i++) {
+			for (int j = 0; j < row; j++) {
+				System.out.print(map[i][j] + " ");
+			}
+			System.out.println();
+		}
 		
 	}
 	
@@ -61,31 +67,35 @@ public class BOJ_17472_다리_만들기_2 {
 	// bfs 를 한번 돌 때마다 모두 연결되어있는지 확인하는 과정 필요함
 	// 길이가 1보다는 커야됌
 	// 
-	static void Connect(int y, int x) {
+	static void connectLand(int y, int x, int idx) {
 		Queue<Node> queue = new ArrayDeque<>();		
-		queue.offer(new Node(y, x));
+		visited = new boolean[col][row];
 		for(int d = 0; d < 4; d++) {
+			queue.offer(new Node(y, x, 0));
 			while(!queue.isEmpty()) {
 				Node node = queue.poll();			
 				int nx = node.x + dx[d];
 				int ny = node.y + dy[d];
-				if(ny < 0 || nx < 0 || ny >= col || nx >= row || map[ny][nx] == 0) continue;				
-				map[ny][nx] = landCount;
-				queue.offer(new Node(ny, nx));
+				if(ny < 0 || nx < 0 || ny >= col || nx >= row || visited[ny][nx]) continue;
+				if(map[ny][nx] != idx){
+					if(map[ny][nx] != 0){
+						int from = idx - 1;
+						int to = map[ny][nx] - 1;
+						int
+					}
+				}
 			}
 		}
 	}
 	
 	static class Node{
-		int y, x;
+		int y, x, cost;
 
-		public Node(int y, int x) {
-			super();
+		public Node(int y, int x, int cost) {
 			this.y = y;
 			this.x = x;
+			this.cost = cost;
 		}
-		
-		
 	}
 	
 }
