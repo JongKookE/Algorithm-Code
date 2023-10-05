@@ -62,7 +62,7 @@ public class BOJ_1238_파티 {
 			if(visited[num]) continue; 
 			visited[num] = true;
 			for(Node node: list.get(num)) {
-				if(!visited[node.number] && dist[node.number] > (dist[num] +node.cost)) {
+				if(!visited[node.number] && dist[node.number] > (dist[num] + node.cost)) {
 					dist[node.number] = dist[num] + node.cost;
 					pq.offer(new Node(node.number, dist[node.number]));
 				}
