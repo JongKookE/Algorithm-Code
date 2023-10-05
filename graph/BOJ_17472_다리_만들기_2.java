@@ -60,7 +60,6 @@ public class BOJ_17472_다리_만들기_2 {
 	}
 	// bfs 를 한번 돌 때마다 모두 연결되어있는지 확인하는 과정 필요함
 	// 길이가 1보다는 커야됌
-	// 
 	static void Connect(int y, int x) {
 		Queue<Node> queue = new ArrayDeque<>();		
 		queue.offer(new Node(y, x));
