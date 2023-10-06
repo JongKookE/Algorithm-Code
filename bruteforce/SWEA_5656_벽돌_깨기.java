@@ -4,7 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.ArrayDeque;
 import java.util.Arrays;
+import java.util.Deque;
 import java.util.StringTokenizer;
 
 public class SWEA_5656_벽돌_깨기 {
@@ -12,9 +14,11 @@ public class SWEA_5656_벽돌_깨기 {
 	static int ball, col, row, min;
 	static int[] target, src;
 	static int[] dy = {-1, 1, 0, 0}, dx = {0, 0, -1, 1};
+	static StringBuilder sb = new StringBuilder();
 	public static void main(String[] args) throws IOException{
 		System.setIn(new FileInputStream("src//input//SWEA_5656_input.txt"));
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+
 		int T = Integer.parseInt(br.readLine());
 		for(int t = 1; t <= T; t++) {
 			StringTokenizer st = new StringTokenizer(br.readLine());
@@ -33,13 +37,16 @@ public class SWEA_5656_벽돌_깨기 {
 			}
 			min = Integer.MAX_VALUE;			
 			duplicatePerm(0);
-
+			sb.append("#").append(t).append(" ").append(countBricks()).append("\n");
 		}
+		System.out.println(sb);
 
 	}
 	static void duplicatePerm(int cnt) {
 		if(cnt == ball) {
 			destroy();
+			fallDown();
+			System.out.println(123);
 			return;
 		}
 		for(int i = 1; i <= row; i++) {
@@ -72,6 +79,24 @@ public class SWEA_5656_벽돌_깨기 {
 	}
 	
 	static void fallDown() {
-		
+		Deque<Integer> stack = new ArrayDeque<>();
+		for(int i = 1; i <= col; i++){
+			for(int j = 1; j <= row; j++)  if(bricks[i][j] != 0) stack.add(bricks[i][j]);
+			for(int j = col; j >= 1; j--){
+				if(stack.isEmpty()) bricks[j][i] = 0;
+				else bricks[j][i] = stack.pollLast();
+			}
+		}
 	}
+
+	static int countBricks(){
+		int count = 0;
+		for(int i = 1; i <= col; i++){
+			for(int j = 1; j <= row; j++){
+				if(bricks[i][j] != 0) count++;
+			}
+		}
+		return count;
+	}
+
 }
