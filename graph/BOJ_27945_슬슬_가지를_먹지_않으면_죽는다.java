@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.PriorityQueue;
 import java.util.Queue;
@@ -18,7 +17,7 @@ public class BOJ_27945_슬슬_가지를_먹지_않으면_죽는다 {
 	static boolean[] visited;
 	static int[] parents;
 	static Queue<Integer> queue = new ArrayDeque<>();
-	
+
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
@@ -26,7 +25,7 @@ public class BOJ_27945_슬슬_가지를_먹지_않으면_죽는다 {
 		edge = Integer.parseInt(st.nextToken());
 		graph = new ArrayList<>();
 		visited = new boolean[vertex];
-		
+
 		for(int v = 0; v < edge; v++) {
 			st = new StringTokenizer(br.readLine());
 			int from = Integer.parseInt(st.nextToken());
@@ -35,30 +34,29 @@ public class BOJ_27945_슬슬_가지를_먹지_않으면_죽는다 {
 //			graph.add(new Node(from, to, day));
 			graph.add(new Node(from, to, day));
 		}
-		
+
 		Collections.sort(graph);
-		
+
 		parents = new int[vertex+1];
 		for(int i = 1; i <= vertex; i++) parents[i] = i;
 		int count = 1;
-		
-		for(Node node : pq) {
-			if(node.day != count) break;			
+
+		for(Node node : graph) {
+			if(node.day != count) break;
 			if(find(node.to) != find(node.from)){
 				union(node.to, node.from);
-				count++;							
+				count++;
 			}
 		}
-		
-		System.out.println(count);
 
+		System.out.println(count);
 	}
-	
+
 	static int find(int a) {
 		if(parents[a] == a) return a;
 		else return parents[a] = find(parents[a]);
 	}
-	
+
 	static boolean union(int a, int b) {
 		int rootA = find(a);
 		int rootB = find(b);
@@ -66,9 +64,9 @@ public class BOJ_27945_슬슬_가지를_먹지_않으면_죽는다 {
 		parents[rootB] = rootA;
 		return true;
 	}
-	 
-	
-	
+
+
+
 	static class Node implements Comparable<Node>{
 		int from, to, day;
 
@@ -78,7 +76,7 @@ public class BOJ_27945_슬슬_가지를_먹지_않으면_죽는다 {
 			this.to = to;
 			this.day = day;
 		}
-		
+
 		@Override
 		public int compareTo(Node o) {
 			// TODO Auto-generated method stub
