@@ -22,14 +22,16 @@ public class BOJ_2096_내려가기 {
 			origin[t][0] = a;
 			origin[t][1] = b;
 			origin[t][2] = c;
+			
+			if(t == 0) {
+				for(int p = 0; p < 3; p++) {
+					dpMax[0][p] = origin[0][p];
+					dpMin[0][p] = origin[0][p];
+				}
+			}
+			
 		}
-		dpMax[0][0] = origin[0][0];
-		dpMax[0][1] = origin[0][1];
-		dpMax[0][2] = origin[0][2];
-		
-		dpMin[0][0] = origin[0][0];
-		dpMin[0][1] = origin[0][1];
-		dpMin[0][2] = origin[0][2];
+
 		
 		for(int t = 1; t < T; t++) {
 			// 최소값 dp
