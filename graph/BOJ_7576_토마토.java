@@ -73,7 +73,6 @@ public class BOJ_7576_토마토 {
 			super();
 			this.y = y;
 			this.x = x;
-		}
-		
+		}		
 	}
 }
