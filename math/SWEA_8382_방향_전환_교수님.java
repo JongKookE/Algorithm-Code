@@ -5,8 +5,6 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-import com.sun.xml.internal.bind.v2.runtime.property.StructureLoaderBuilder;
-
 public class SWEA_8382_방향_전환_교수님 {
 	static int T, x1,y1, x2, y2, ans;
 	static StringBuilder sb = new StringBuilder();

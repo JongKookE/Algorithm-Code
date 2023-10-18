@@ -13,9 +13,11 @@ public class BOJ_7662_이중_우선순위_큐 {
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		T = Integer.parseInt(br.readLine());
+		
+		StringBuilder sb = new StringBuilder();
 		for(int t = 0; t < T; t++) {
 			N = Integer.parseInt(br.readLine());			
-			pq = new PriorityQueue<>();
+			pq = new PriorityQueue<>();	
 			TreeMap<Integer, Integer> map = new TreeMap<>();
 			for(int n = 0; n < N; n++) {
 				StringTokenizer st = new StringTokenizer(br.readLine());
@@ -24,13 +26,23 @@ public class BOJ_7662_이중_우선순위_큐 {
 				
 				if(command == 'I') map.put(elem, map.getOrDefault(elem, 0)+1);
 				else {
-					if(elem == 1) 
+					if(map.isEmpty()) continue;
+					if(elem == 1) {
+						if(map.get(map.lastKey()) > 1) map.put(map.lastKey(), map.get(map.lastKey())-1);
+						else map.remove(map.lastKey());
+					}
+					else {
+						if (map.get(map.firstKey()) > 1) map.put(map.firstKey(), map.get(map.firstKey())-1);
+						else map.remove(map.firstKey());
+					}					
 				}
 			}
-		}
 			
-		
-		
+			if(map.isEmpty()) sb.append("EMPTY").append("\n");
+			else sb.append(map.lastKey()).append(" ").append(map.firstKey()).append("\n");
+			
+		}
+		System.out.println(sb);
 	}
 
 }
