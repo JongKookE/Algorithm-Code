@@ -48,7 +48,6 @@ public class BOJ_1043_거짓말 {
 
 			for(int j = 0; j < count; j++){
 				for(int k = j+1; k < count; k++){
-					if(!graph.)
 				}
 			}
 		}
