@@ -3,24 +3,18 @@ package graph;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.nio.Buffer;
 import java.util.*;
 
-
 public class BOJ_1043_거짓말 {
-<<<<<<< HEAD
 	static int vertex, edge, known;
 	static ArrayList<ArrayList<Integer>> lst = new ArrayList<>();
 	static ArrayList<Integer> already;
-=======
 	static Queue<Integer> queue = new ArrayDeque<>();
-	static int vertex, edge;
 	// 진실을 아는 사람은 계속되서 전파되어 증가하기 때문에 수를 알수없다.
 	static ArrayList<Integer> trueMan;
 	static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
 	static boolean[] visited;
 
->>>>>>> 79581b392a43bb8db6928ecc710b6380bc385313
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st = new StringTokenizer(br.readLine());
@@ -30,12 +24,9 @@ public class BOJ_1043_거짓말 {
 		visited = new boolean[vertex];
 		Queue<Integer> queue = new ArrayDeque<>();
 		st = new StringTokenizer(br.readLine());
-<<<<<<< HEAD
 		known = Integer.parseInt(st.nextToken());
-		
-=======
+
 		int known = Integer.parseInt(st.nextToken());
->>>>>>> 79581b392a43bb8db6928ecc710b6380bc385313
 
 		if(known == 0) {
 			System.out.println(edge);
@@ -50,27 +41,8 @@ public class BOJ_1043_거짓말 {
 			queue.add(elem);
 			visited[elem] = true;
 		}
-<<<<<<< HEAD
+
 				
-	}
-	static void bfs() {
-		Queue<Integer> queue = new ArrayDeque<>();
-		boolean[] visited = new boolean[known+1];
-=======
-		
-		// 2차원 인접행렬
-		for(int i = 1; i <= edge; i++){
-			st = new StringTokenizer(br.readLine());
-			int count = Integer.parseInt(st.nextToken());
-			for(int c = 0; c < count; c++) graph.get(i).add(Integer.parseInt(st.nextToken()));
-
-			for(int j = 0; j < count; j++){
-				for(int k = j+1; k < count; k++){
-				}
-			}
-		}
-
->>>>>>> 79581b392a43bb8db6928ecc710b6380bc385313
 	}
 
 }
