@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 
 
 public class BOJ_1043_거짓말 {
-	static int vertex, edge;
+	static int vertex, edge, known;
 	static ArrayList<ArrayList<Integer>> lst = new ArrayList<>();
 	static ArrayList<Integer> already;
 	public static void main(String[] args) throws IOException{
@@ -20,7 +20,7 @@ public class BOJ_1043_거짓말 {
 		edge = Integer.parseInt(st.nextToken());
 		
 		st = new StringTokenizer(br.readLine());
-		int known = Integer.parseInt(st.nextToken());
+		known = Integer.parseInt(st.nextToken());
 		
 
 		if(known == 0) {
@@ -45,6 +45,6 @@ public class BOJ_1043_거짓말 {
 	}
 	static void bfs() {
 		Queue<Integer> queue = new ArrayDeque<>();
-		boolean[][] visited = new boolean[]
+		boolean[] visited = new boolean[known+1];
 	}
 }
