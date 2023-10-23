@@ -3,11 +3,14 @@ package graph;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.StreamTokenizer;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.StringTokenizer;
 
 public class BOJ_1916_최소비용_구하기 {
 	static int vertex, edge, start, end;
-	static ArrayList<ArrayList<Integer>> lst = new ArrayList<>();
+	static ArrayList<ArrayList<Node>> lst = new ArrayList<>();
 	static int[] dist;	
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -18,8 +21,15 @@ public class BOJ_1916_최소비용_구하기 {
 		for(int i = 0; i <= vertex; i++) lst.add(new ArrayList<>());
 		
 		for(int e = 0; e < edge; e++) {
-			
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			int from = Integer.parseInt(st.nextToken());
+			int to = Integer.parseInt(st.nextToken());
+			int cost = Integer.parseInt(st.nextToken());
+			lst.get(from).add(new Node(to, cost));
 		}
+		dist = new int[vertex+1];
+		Arrays.fill(dist, Integer.MAX_VALUE);
+		
 		
 		
 	}
