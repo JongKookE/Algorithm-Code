@@ -3,33 +3,28 @@ package graph;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-<<<<<<< HEAD
 import java.util.ArrayDeque;
 import java.util.ArrayList;
 import java.util.Queue;
 import java.util.StringTokenizer;
-=======
 import java.util.*;
->>>>>>> 24a29acc42a10a584b5d1f726adb0d4681e9cc4c
+
 
 public class BOJ_1043_거짓말 {
 	static int vertex, edge, known;
-<<<<<<< HEAD
-=======
+
 	static ArrayList<ArrayList<Integer>> lst = new ArrayList<>();
 	static ArrayList<Integer> already;
 	static Queue<Integer> queue = new ArrayDeque<>();
->>>>>>> 24a29acc42a10a584b5d1f726adb0d4681e9cc4c
+
 	// 진실을 아는 사람은 계속되서 전파되어 증가하기 때문에 수를 알수없다.
 	static ArrayList<Integer> trueMan;
 	static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
 	static boolean[] visited;
-<<<<<<< HEAD
+
 	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
 	static StringTokenizer st;
-=======
 
->>>>>>> 24a29acc42a10a584b5d1f726adb0d4681e9cc4c
 	public static void main(String[] args) throws IOException{
 		st = new StringTokenizer(br.readLine());
 	
@@ -39,14 +34,6 @@ public class BOJ_1043_거짓말 {
 		Queue<Integer> queue = new ArrayDeque<>();
 		st = new StringTokenizer(br.readLine());
 		known = Integer.parseInt(st.nextToken());
-<<<<<<< HEAD
-		
-
-
-=======
-
-		int known = Integer.parseInt(st.nextToken());
->>>>>>> 24a29acc42a10a584b5d1f726adb0d4681e9cc4c
 
 		if(known == 0) {
 			System.out.println(edge);
@@ -61,7 +48,6 @@ public class BOJ_1043_거짓말 {
 			queue.add(elem);
 			visited[elem] = true;
 		}
-<<<<<<< HEAD
 				
 	}
 	static void bfs() throws IOException {
@@ -79,11 +65,5 @@ public class BOJ_1043_거짓말 {
 				}
 			}
 		}
-	}
-=======
-
-				
-	}
->>>>>>> 24a29acc42a10a584b5d1f726adb0d4681e9cc4c
-
+	}		
 }
