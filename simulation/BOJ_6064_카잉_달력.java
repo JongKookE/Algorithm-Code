@@ -5,15 +5,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-<<<<<<< HEAD
-public class BOJ_6064_카잉_달력 {
-    public static void main(String[] args) throws IOException {
-=======
-
 public class BOJ_6064_카잉_달력 {
 
 	public static void main(String[] args) throws IOException {
->>>>>>> 9a1a684132974aba8e0c8a26655c2e28010a3646
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         int T;
         T = Integer.parseInt(br.readLine());
