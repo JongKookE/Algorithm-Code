@@ -1,3 +1,5 @@
+import java.util.Arrays;
+
 public class time {
     public static void main(String[] args) {
         int max = 10000;
@@ -10,5 +12,6 @@ public class time {
         }
         long temporalEnd = System.currentTimeMillis();
         System.out.printf("시간차이: %d\n", (temporalEnd - temporalStart));
+
     }
 }

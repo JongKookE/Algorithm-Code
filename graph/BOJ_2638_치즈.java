@@ -96,7 +96,6 @@ public class BOJ_2638_치즈 {
         for(boolean[] v : cheese)
             for(boolean b : v)
                 if(b) return true;
-
         return false;
     }
     static void printArray(boolean[][] ary){
