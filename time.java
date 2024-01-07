@@ -1,4 +1,5 @@
 import java.util.Arrays;
+import java.util.HashSet;
 
 public class time {
     public static void main(String[] args) {
@@ -11,7 +12,10 @@ public class time {
             }
         }
         long temporalEnd = System.currentTimeMillis();
-        System.out.printf("시간차이: %d\n", (temporalEnd - temporalStart));
+//        System.out.printf("시간차이: %d\n", (temporalEnd - temporalStart));
 
+        HashSet<Integer> set = new HashSet<>();
+        set.add(1);
+        System.out.println(!set.contains(2));
     }
 }
