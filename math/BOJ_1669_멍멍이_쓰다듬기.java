@@ -17,6 +17,6 @@ public class BOJ_1669_멍멍이_쓰다듬기 {
 
         if(diff <= 3) System.out.println(diff); return;
 
-        
+
     }
 }
