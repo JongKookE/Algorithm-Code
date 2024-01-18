@@ -8,7 +8,6 @@ import java.util.StringTokenizer;
 
 public class BOJ_2630_색종이_만들기 {
     static int n, white, blue;
-    static int[] dy = {-1, 1, 0, 0}, dx = {0, 0, -1, 1};
     static int[][] maps;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
