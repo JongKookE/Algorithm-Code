@@ -15,24 +15,20 @@ public class BOJ_17609_회문 {
 
         for(int n = 0; n < N; n++){
             chr = br.readLine().toCharArray();
-            System.out.println(isPalindrome());
+            int start = 0;
+            int end = chr.length - 1;
+            System.out.println(isPalindrome(start, end, 0));
         }
     }
-    static int isPalindrome(){
-        boolean flag = true;
-        int start = 0;
-        int end = chr.length - 1;
-        while(start <= end){
-            if(chr[start] == chr[end]){
-                start++;
-                end--;
+    static int isPalindrome(int start, int end, int depth){
+            if(depth >= 2) return 2;
+            while(start < end) {
+                if (chr[start] == chr[end]) {
+                    start++;
+                    end--;
+                }
+                else return Math.min(isPalindrome(start + 1, end, depth+1), isPalindrome(start, end - 1, depth+1));
             }
-            else if(chr[start+1] == chr[end] && flag){
-
-            }
-
-
-        }
-       return 0;
+            return depth;
     }
 }
