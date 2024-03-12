@@ -10,7 +10,7 @@ import java.util.StringTokenizer;
 
 public class BOJ_1504_특정한_최단_경로 {
 	static int vertex, edge;
-	static final int INF = 200_001;
+	static final int INF = Integer.MAX_VALUE;
 	static ArrayList<ArrayList<Node>> dList = new ArrayList<>();
 	public static void main(String[] args) throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -29,17 +29,17 @@ public class BOJ_1504_특정한_최단_경로 {
 			dList.get(from).add(new Node(to, cost));
 			dList.get(to).add(new Node(from, cost));
 		}
-//		for(int i = 0; i <= vertex; i++) System.out.println(i + "번째" + dList.get(i));
+
 		st = new StringTokenizer(br.readLine());
 		int v1 = Integer.parseInt(st.nextToken());
 		int v2 = Integer.parseInt(st.nextToken());
-		
-		int res1 = 0;
+		long res1 = 0;
+
 		res1 += dijkstra(1, v1);
 		res1 += dijkstra(v1, v2);
 		res1 += dijkstra(v2, vertex);
-		
-		int res2 = 0;
+
+		long res2 = 0;
 		res2 += dijkstra(1, v2);
 		res2 += dijkstra(v2, v1);
 		res2 += dijkstra(v1, vertex);
@@ -53,16 +53,19 @@ public class BOJ_1504_특정한_최단_경로 {
 		Arrays.fill(dist, INF);
 		dist[start] = 0;
 		
-		PriorityQueue<Node> pq = new PriorityQueue<>((e1, e2) -> e1.cost - e2.cost);
+		PriorityQueue<Node> pq = new PriorityQueue<>();
 		pq.add(new Node(start, 0));
-		
+
 		while(!pq.isEmpty()) {
 			Node curNode = pq.poll();
 			int num = curNode.e;
 			if(visited[num]) continue;
 			visited[num] = true;
-			
+
+			// 현재 정점에서 갈수있는 다른 정점
 			for(Node node : dList.get(num)) {
+				// 다음 노드의 갈 수 있는 길이와 현재 정점까지의 거리와 다음 노드의 길이를 더해서
+				// 다음 노드의 길이와 비교해서 작은값으로 갱신
 				if(!visited[node.e] && dist[node.e] > dist[num] + node.cost) {
 					dist[node.e] = dist[num] + node.cost;
 					pq.add(new Node(node.e, dist[node.e]));
@@ -72,7 +75,7 @@ public class BOJ_1504_특정한_최단_경로 {
 		return dist[end];
 	}
 	
-	static class Node{
+	static class Node implements Comparable<Node>{
 		int e, cost;
 
 		public Node(int e, int cost) {
@@ -80,10 +83,9 @@ public class BOJ_1504_특정한_최단_경로 {
 			this.e = e;
 			this.cost = cost;
 		}
-
 		@Override
-		public String toString() {
-			return "Node [e=" + e + ", cost=" + cost + "]";
+		public int compareTo(Node o) {
+			return cost - o.cost;
 		}
 	}
 }

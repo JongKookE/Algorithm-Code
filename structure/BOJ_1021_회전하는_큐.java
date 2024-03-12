@@ -31,8 +31,7 @@ public class BOJ_1021_회전하는_큐 {
         // 일단 뽑아낼 원소의 위치가 left가 빠른지 right가 빠른지 판별하는 것
         // 아마도 q.size 절반보다 작으면 left 아니면 right가 빠르다.
         // 그걸로 보내주면 끝
-        for(int i = 1 ; i <= N ; i++)
-            dq.add(i);
+        for(int i = 1 ; i <= N ; i++) dq.add(i);
 
         for(int i = 0 ; i < M ; i++) {
 
@@ -56,10 +55,13 @@ public class BOJ_1021_회전하는_큐 {
 
     }
     public static boolean check(int a) {
+        int half = dq.size()/2;
+        int count  = 0;
 
-        for(int i = 0 ; i <= dq.size()/2 ; i++) {
-            if(a == dq.peekFirst())
-                return true;
+        for(Integer integer: dq){
+            if(count > half) return false;
+            if (a == integer) return true;
+            count++;
         }
 
         return false;

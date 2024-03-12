@@ -2,3 +2,4 @@ module-info.java
 .idea/
 out/
 *.iml 
+input/sample_25_input.txt
