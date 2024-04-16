@@ -17,7 +17,17 @@ public class time {
 //        HashSet<Integer> set = new HashSet<>();
 //        set.add(1);
 //        System.out.println(!set.contains(2));
+        String s = "neotowheret";
+        for(int i = 1; i < s.length(); i++){
+            for(int j = 0; j < i; j++){
+                String temp = s.substring(j, i);
+                System.out.println(temp);
+            }
+        }
 
-        System.out.println(Long.toBinaryString(-127));
+
+//        System.out.println(subString);
+
+//        System.out.println(Long.toBinaryString(-127));
     }
 }
