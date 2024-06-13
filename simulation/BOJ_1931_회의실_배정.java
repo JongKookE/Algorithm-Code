@@ -4,8 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
-import java.util.Comparator;
 import java.util.StringTokenizer;
+import java.util.Collections;
 
 public class BOJ_1931_회의실_배정 {
     static int N, cnt = 1;
