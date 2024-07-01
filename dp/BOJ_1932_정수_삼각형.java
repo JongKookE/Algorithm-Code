@@ -6,14 +6,13 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
 public class BOJ_1932_정수_삼각형 {
-    static int[][] dp, resultDp;
+    static int[][] dp;
     static StringTokenizer st;
     static int N;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         N = Integer.parseInt(br.readLine());
-        dp = new int[N+2][N+2];
-        resultDp = new int[N+2][N+2];
+        dp = new int[N+1][N+1];
 
         for(int n = 1; n <= N; n++) {
             st = new StringTokenizer(br.readLine());

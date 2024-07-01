@@ -4,57 +4,57 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class BOJ_1967_트리의_지름 {
-	static ArrayList<Node> tree[];
+	static ArrayList<ArrayList<Node>> nodes = new ArrayList<>();
 	static boolean[] visited;
-	static int MAX_VERTEX = Integer.MIN_VALUE, MAX = Integer.MIN_VALUE;
+	static int N;
+	static int max = Integer.MIN_VALUE;
+	static StringTokenizer st;
 	public static void main(String[] args)  throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int size = Integer.parseInt(br.readLine());
-		tree = new ArrayList[size + 1];
-		visited = new boolean[size+1];
-		
-		for(int i = 1; i <= size; i++) tree[i] = new ArrayList<Node>();
-		
-		for(int i = 1; i < size; i++) {
-			StringTokenizer st = new StringTokenizer(br.readLine());
+		N = Integer.parseInt(br.readLine());
+		if(N == 1) {
+			System.out.println(0);
+			return;
+		}
+		for(int n=0; n <= N; n++) nodes.add(new ArrayList<>());
+
+		for(int n = 0; n < N-1; n++){
+			st = new StringTokenizer(br.readLine());
 			int from = Integer.parseInt(st.nextToken());
 			int to = Integer.parseInt(st.nextToken());
-			int len = Integer.parseInt(st.nextToken());
-			tree[from].add(new Node(to, len));
-			tree[to].add(new Node(from, len));
-		}
-		
-		dfs(1,0);
-		Arrays.fill(visited, false);
-		
-		dfs(MAX_VERTEX, 0);
-		
-		System.out.println(MAX);
-	}
-	
-	static void dfs(int start, int depth) {
-		for(Node node : tree[start]) {
-			if(!visited[node.vertex]) {
-				visited[node.vertex] = true;
-				dfs(node.vertex, depth + node.edge);
-			}
-		}
-		if(MAX < depth) {
-			MAX = depth;
-			MAX_VERTEX = start;
-		}
-	}
-	static class Node{
-		int vertex, edge;
+			int distance = Integer.parseInt(st.nextToken());
 
-		public Node(int vertex, int edge) {
-			super();
-			this.vertex = vertex;
-			this.edge = edge;
+			nodes.get(from).add(new Node(to, distance));
+			nodes.get(to).add(new Node(from, distance));
 		}
-	}	
+		 for(int n = 1; n <= N; n++){
+			 ArrayList<Node> nodeArrayList = nodes.get(n);
+			 if(nodeArrayList.size() != 1) continue;
+			 visited = new boolean[N+1];
+			 dfs(n, 0);
+		 }
+		System.out.println(max);
+	}
+	static void dfs(int index, int currentDistance){
+		visited[index] = true;
+		for(Node node: nodes.get(index)){
+			if(visited[node.to]) continue;
+			visited[node.to] = true;
+			dfs(node.to, currentDistance + node.dist);
+		}
+		max = Math.max(max, currentDistance);
+	}
+
+	static class Node{
+		int to, dist;
+
+		Node(int to, int dist){
+			this.to	= to;
+			this.dist = dist;
+		}
+
+	}
 }
