@@ -9,16 +9,11 @@ import java.util.StringTokenizer;
 public class BOJ_1967_트리의_지름 {
 	static ArrayList<ArrayList<Node>> nodes = new ArrayList<>();
 	static boolean[] visited;
-	static int N;
-	static int max = Integer.MIN_VALUE;
+	static int N, max;
 	static StringTokenizer st;
 	public static void main(String[] args)  throws IOException{
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		N = Integer.parseInt(br.readLine());
-		if(N == 1) {
-			System.out.println(0);
-			return;
-		}
 		for(int n=0; n <= N; n++) nodes.add(new ArrayList<>());
 
 		for(int n = 0; n < N-1; n++){
@@ -30,12 +25,14 @@ public class BOJ_1967_트리의_지름 {
 			nodes.get(from).add(new Node(to, distance));
 			nodes.get(to).add(new Node(from, distance));
 		}
-		 for(int n = 1; n <= N; n++){
-			 ArrayList<Node> nodeArrayList = nodes.get(n);
-			 if(nodeArrayList.size() != 1) continue;
-			 visited = new boolean[N+1];
-			 dfs(n, 0);
-		 }
+
+		for(int n = 1; n <= N; n++){
+			ArrayList<Node> nodeArrayList = nodes.get(n);
+			if(nodeArrayList.size() != 1) continue;
+			visited = new boolean[N+1];
+			dfs(n, 0);
+		}
+
 		System.out.println(max);
 	}
 	static void dfs(int index, int currentDistance){
