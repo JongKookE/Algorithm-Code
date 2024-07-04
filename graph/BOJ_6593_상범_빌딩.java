@@ -36,7 +36,7 @@ public class BOJ_6593_상범_빌딩 {
         queue.add(new Node(zxy[0], zxy[1], zxy[2], 0));
         while(!queue.isEmpty()){
             Node current = queue.poll();
-
+//            visited[current.z][current.x][current.y] = true;
             for(int d = 0; d < 6; d++){
                 int nz = current.z + dz[d];
                 int nx = current.x + dx[d];
@@ -45,6 +45,7 @@ public class BOJ_6593_상범_빌딩 {
                 if(buildings[nz][nx][ny] == '#') continue;
                 if(buildings[nz][nx][ny] == 'E') return current.time + 1;
                 queue.add(new Node(nz, nx, ny, current.time + 1));
+                // 큐에 삽입하고 for를 벗어나기 전에 방문처리를 해주자
                 visited[nz][nx][ny] = true;
             }
         }
@@ -81,6 +82,7 @@ public class BOJ_6593_상범_빌딩 {
         }
         return result;
     }
+
     static class Node{
         int z, x, y, time;
 
