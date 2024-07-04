@@ -30,7 +30,6 @@ public class BOJ_10599_페르시아의_왕들 {
             }
             if(cnt == 4) return;
             System.out.printf("%d %d\n", deathMin - birthMax, deathMax - birthMin );
-//            System.out.printf("%d %d %d %d\n", birthMin,birthMax, deathMin,deathMax );
         }
     }
 }
