@@ -1,7 +1,7 @@
 package etc;
 
-import java.util.*;
 import java.io.*;
+
 class ELICE_목표량 {
     static int min = Integer.MAX_VALUE;
     static int[] src, target;
