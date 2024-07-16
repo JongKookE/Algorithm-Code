@@ -1,35 +1,38 @@
 package etc;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class BOJ_11650_좌표_정렬하기 {
-    static StringTokenizer st;
-    static int N;
-    static int[][] array;
-    static StringBuilder sb = new StringBuilder();
-    public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        N = Integer.parseInt(br.readLine());
-        array = new int[N][2];
-        for(int n = 0; n < N; n++){
-            st = new StringTokenizer(br.readLine());
-            array[n][0] = Integer.parseInt(st.nextToken());
-            array[n][1] = Integer.parseInt(st.nextToken());
+    static long mod = 1000000007;
+    //메모이제이션용 맵
+    static Map<Long, Long> map = new HashMap<>();
+    static long answer;
+    public static void main(String[] args) {
+        Scanner sc = new Scanner(System.in);
+        long N = sc.nextLong();
+        //0~3까지 초기화 했음
+        map.put(0L, 0L);
+        map.put(1L, 1L);
+        map.put(2L, 1L);
+        map.put(3L, 2L);
+        answer = fibo(N);
+        System.out.println(Long.valueOf(answer).intValue());
+    }
+
+    public static long fibo(long N) {
+        if (map.containsKey(N)) return map.get(N);
+        long a, b, c;
+        if (N % 2 == 1) {
+            a = fibo(N / 2 + 1);
+            b = fibo(N / 2);
+            map.put(N, ((a % mod) * (a % mod) % mod + (b % mod) * (b % mod) % mod) % mod);
+        } else {
+            a = fibo(N / 2 + 1);
+            b = fibo(N / 2);
+            c = fibo(N / 2 - 1);
+            map.put(N, ((a % mod) * (b % mod) % mod + (b % mod) * (c % mod) % mod) % mod);
         }
-        Arrays.sort(array, (o1, o2) -> {
-            if(o1[0] == o2[0]) return o1[1] - o2[1];
-            return o1[0] - o2[0];
-        });
-        for(int[] arr : array) {
-            for(int num : arr) {
-                sb.append(num).append(" ");
-            }
-            sb.append("\n");
-        }
-        System.out.println(sb.toString());
+
+        return map.get(N);
     }
 }
