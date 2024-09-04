@@ -3,80 +3,63 @@ package graph;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.PriorityQueue;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class BOJ_5972_택배_배송 {
-    static StringBuilder sb = new StringBuilder();
-    static int N, M;
-    static int[] dist;
-    static boolean[] visited;
-    static ArrayList<ArrayList<Node>> list = new ArrayList<>();
-    static PriorityQueue<Node> pq;
-    static int result;
+    static int vertex, edge;
+    static ArrayList<ArrayList<Node>> graph = new ArrayList<>();
+    static PriorityQueue<Node> pq = new PriorityQueue<>(Comparator.comparingInt(o -> o.time));
+    static int[] time;
+    static StringTokenizer st;
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        StringTokenizer st = new StringTokenizer(br.readLine());
-        // vertex, edge
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
+        st = new StringTokenizer(br.readLine());
+        vertex = Integer.parseInt(st.nextToken());
+        edge = Integer.parseInt(st.nextToken());
+        time = new int[vertex+1];
+        Arrays.fill(time, Integer.MAX_VALUE);
+        for(int v = 0; v <= vertex; v++) graph.add(new ArrayList<>());
 
-        dist = new int[N+1];
-        visited = new boolean[N+1];
-        
-        for(int n = 0; n <= N; n++) list.add(new ArrayList<>());
-
-        for(int m = 0; m < M; m++){
+        for(int e = 0; e < edge; e++) {
             st = new StringTokenizer(br.readLine());
-            int start = Integer.parseInt(st.nextToken());
-            int end = Integer.parseInt(st.nextToken());
-            int cost = Integer.parseInt(st.nextToken());
-
-            list.get(start).add(new Node(end, cost));
-            list.get(end).add(new Node(start, cost));
+            int from = Integer.parseInt(st.nextToken());
+            int to = Integer.parseInt(st.nextToken());
+            int time = Integer.parseInt(st.nextToken());
+            graph.get(from).add(new Node(to, time));
+            graph.get(to).add(new Node(from, time));
         }
 
-
         dijkstra();
-
+        System.out.println(time[vertex]);
     }
 
     static void dijkstra(){
-        pq = new PriorityQueue<>((o1, o2) -> o1.cost - o2.cost);
-        Arrays.fill(dist, Integer.MAX_VALUE);
+        time[1] = 0;
         pq.add(new Node(1, 0));
-        dist[1] = 0;
 
         while(!pq.isEmpty()){
-            Node node = pq.poll();
-
-            if(visited[node.vertex]) continue;
-            visited[node.vertex] = true;
-
-            for(Node next: list.get(node.vertex)){
-                if(!visited[next.vertex] && dist[next.vertex] > dist[node.vertex] + next.cost){
-                    dist[next.vertex] = dist[node.vertex] + next.cost;
-                    pq.add(new Node(next.vertex, dist[next.vertex]));
+            Node currentNode = pq.poll();
+            for(Node nextNode: graph.get(currentNode.idx)){
+                if(time[nextNode.idx] > time[currentNode.idx] + nextNode.time){
+                    time[nextNode.idx] = nextNode.time + time[currentNode.idx];
+                    pq.add(new Node(nextNode.idx, time[nextNode.idx]));
                 }
             }
         }
-        System.out.println(dist[N]);
     }
-
     static class Node{
-        int vertex, cost;
-        public Node(int vertex, int cost){
-            this.vertex = vertex;
-            this.cost = cost;
+        int idx, time;
+
+        public Node(int idx, int time) {
+            this.idx = idx;
+            this.time = time;
         }
 
         @Override
         public String toString() {
             return "Node{" +
-                    "vertex=" + vertex +
-                    ", cost=" + cost +
+                    "idx=" + idx +
+                    ", time=" + time +
                     '}';
         }
     }

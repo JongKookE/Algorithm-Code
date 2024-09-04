@@ -11,59 +11,73 @@ import java.util.*;
 
 
 public class BOJ_1043_거짓말 {
-	static int vertex, edge, known;
-
-	static ArrayList<ArrayList<Integer>> lst = new ArrayList<>();
-	static ArrayList<Integer> already;
-	static Queue<Integer> queue = new ArrayDeque<>();
-
-	// 진실을 아는 사람은 계속되서 전파되어 증가하기 때문에 수를 알수없다.
-	static ArrayList<Integer> trueMan;
-	static ArrayList<ArrayList<Integer>> graph = new ArrayList<>();
+	static int N, M, initialTruthSize, cnt;
+	static int[] parents;
 	static boolean[] visited;
-
-	static BufferedReader br = new BufferedReader(new InputStreamReader(System.in)); 
+	static ArrayList<Integer> truth = new ArrayList<>();
+	static ArrayList<ArrayList<Integer>> parties = new ArrayList<>();
 	static StringTokenizer st;
-
 	public static void main(String[] args) throws IOException{
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		st = new StringTokenizer(br.readLine());
-	
-		vertex = Integer.parseInt(st.nextToken());
-		edge = Integer.parseInt(st.nextToken());
-		visited = new boolean[vertex];
-		Queue<Integer> queue = new ArrayDeque<>();
+		N = Integer.parseInt(st.nextToken());
+		M = Integer.parseInt(st.nextToken());
 		st = new StringTokenizer(br.readLine());
-		known = Integer.parseInt(st.nextToken());
+		initialTruthSize = Integer.parseInt(st.nextToken());
 
-		if(known == 0) {
-			System.out.println(edge);
+		if(initialTruthSize == 0) {
+			System.out.println(M);
 			return;
 		}
-		// 2차원 ArrayList 생성
-		for(int i = 0; i <= vertex; i++) graph.add(new ArrayList<>());
+		parents = new int[N+1];
+		visited = new boolean[N+1];
+		for(int i = 1; i <= N; i++) parents[i] = i;
 
-		// 처음에 진실을 알고있던 사람 정의
-		for(int i = 0; i < known; i++){
-			int elem = Integer.parseInt(st.nextToken());
-			queue.add(elem);
-			visited[elem] = true;
-		}
-				
-	}
-	static void bfs() throws IOException {
-		Queue<Integer> queue = new ArrayDeque<>();
-		boolean[] visited = new boolean[known+1];
-		
-		// 2차원 인접행렬
-		for(int i = 1; i <= edge; i++){
+		while(st.hasMoreTokens()) truth.add(Integer.parseInt(st.nextToken()));
+
+		for(int i = 0; i < M; i++) {
 			st = new StringTokenizer(br.readLine());
-			int count = Integer.parseInt(st.nextToken());
-			for(int c = 0; c < count; c++) graph.get(i).add(Integer.parseInt(st.nextToken()));
+			ArrayList<Integer> party = new ArrayList<>();
+			int size = Integer.parseInt(st.nextToken());
+			for(int j = 0; j < size; j++) party.add(Integer.parseInt(st.nextToken()));
+			parties.add(party);
+		}
 
-			for(int j = 0; j < count; j++){
-				for(int k = j+1; k < count; k++){
-				}
+		for(ArrayList<Integer> party : parties) {
+			for(int i = 0; i < party.size()-1; i++){
+				int a = party.get(i);
+				int b = party.get(i+1);
+				if(find(a) == find(b)) continue;
+				union(a, b);
 			}
 		}
-	}		
+
+		for(ArrayList<Integer> party : parties) {
+			if(isPersonWhoKnows(party)) continue;
+			cnt++;
+		}
+		System.out.println(cnt);
+
+	}
+
+	static boolean isPersonWhoKnows(ArrayList<Integer> party) {
+		for(int people: party) if(truth.contains(find(parents[people]))) return true;
+		return false;
+	}
+
+	static int find(int a){
+		if(parents[a] == a) return a;
+		return parents[a] = find(parents[a]);
+	}
+
+	static void union(int a, int b){
+		int rootA = find(a);
+		int rootB = find(b);
+		if(truth.contains(rootB)) {
+			int tmp = rootA;
+			rootA = rootB;
+			rootB = tmp;
+		}
+		parents[rootB] = rootA;
+	}
 }
